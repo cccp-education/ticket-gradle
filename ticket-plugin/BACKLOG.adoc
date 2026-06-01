@@ -1,0 +1,79 @@
+= BACKLOG — Ticket Gradle (Harlem)
+:toc:
+
+_Date création_ : 2026-06-01
+_Version_ : 0.1.0-SNAPSHOT
+
+'''
+== Vision Produit
+
+Un plugin Gradle N4 qui **transforme le backlog agile (Atlanta) en tickets GitHub Issues actionnables**
+et maintient la **traçabilité bidirectionnelle** backlog → ticket → commit → PR → merge → close.
+
+'''
+== User Stories
+
+=== US-TKT-01 — En tant que chef de projet, je veux créer des GitHub Issues depuis le backlog
+
+*Priorité* : P1
+*EPIC* : TKT-2
+
+.Critères d'acceptation
+- `ticketCreate` lit le story-mapping généré par Atlanta (agile-gradle)
+- Chaque US du backlog devient une GitHub Issue avec titre, description, labels
+- Les EPICs créent des milestones GitHub liées aux issues
+- Le mapping backlog→issue est sauvegardé dans un fichier de traçabilité
+
+=== US-TKT-02 — En tant que développeur, je veux que mes commits soient liés aux tickets
+
+*Priorité* : P1
+*EPIC* : TKT-3
+
+.Critères d'acceptation
+- `ticketLink` parse les conventional commits et associe chaque commit au ticket correspondant
+- Le numéro de ticket est extrait de "Fixes #XX" ou "Closes #XX"
+- Un rapport commit↔ticket est généré en AsciiDoc
+
+=== US-TKT-03 — En tant que chef de projet, je veux un board Kanban
+
+*Priorité* : P2
+*EPIC* : TKT-3
+
+.Critères d'acceptation
+- `ticketBoard` affiche le statut de chaque ticket (To Do / In Progress / Review / Done)
+- Les colonnes sont alimentées par le statut GitHub + statut review (Baltimore)
+- Le board peut être rendu en console et en HTML
+
+=== US-TKT-04 — En tant que chef de projet, je veux un rapport de traçabilité complet
+
+*Priorité* : P2
+*EPIC* : TKT-4
+
+.Critères d'acceptation
+- `ticketReport` trace : backlog item → GitHub Issue → commits → PR → merge
+- Le rapport est exportable en AsciiDoc
+- Indicateur : tickets ouverts, en cours, mergés, stallés
+
+'''
+== Dette Technique
+
+[cols="1,5,2", options="header"]
+|===
+| ID | Description | Priorité
+| DT-01 | Aucune — projet neuf | -
+|===
+
+== Risques
+
+[cols="1,3,2,2", options="header"]
+|===
+| ID | Risque | Impact | Probabilité
+| R-01 | GitHub API rate limiting sur création massive de tickets | Moyen | Faible
+| R-02 | Désynchronisation backlog ↔ tickets si le backlog évolue | Moyen | Moyenne
+|===
+
+== Notes
+
+* Consomme le backlog d'Atlanta (agile-gradle) — contrat : metadata.json + story-mapping.adoc
+* GITHUB_TOKEN obligatoire en env var, jamais en dur
+* Le plugin ne crée pas le backlog, il le consomme pour créer les tickets

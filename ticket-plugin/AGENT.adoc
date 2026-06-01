@@ -1,0 +1,53 @@
+= AGENT.adoc — Ticket Gradle
+
+_Produit_ : Plugin Gradle de ticketing — GitHub Issues, Kanban, lien commit↔ticket
+_Licence_ : Apache 2.0 (OSS)
+_DAG_ : N4 — Plugin Gradle de gouvernance (consomme backlog Atlanta)
+_Dépendance_ : agile-gradle (compileOnly, lecture backlog), langchain4j (LLM)
+
+== Principe
+
+Le plugin `ticket` transforme les US/EPICs du backlog (produit par Atlanta/agile-gradle)
+en tickets actionnables sur GitHub Issues. Il maintient la **traçabilité bidirectionnelle**
+entre backlog → ticket → commit → PR → merge → close.
+
+Pipeline :
+  Backlog (Atlanta) ──→ IA (LLM) ──→ GitHub Issues ──→ Kanban board ──→ commit link
+
+Cas d'usage :
+- Création de GitHub Issues depuis les US du story-mapping
+- Kanban board To Do → In Progress → Review → Done
+- Conventional commits auto-linkés aux tickets
+- Auto-close quand la PR est mergée
+- Rapport de traçabilité (quel commit ferme quel ticket)
+
+== Règles Absolues
+
+=== 1. COMMITS/GIT — INTERDICTION FORMELLE sans permission
+=== 2. PUBLISH — INTERDICTION FORMELLE sans permission
+=== 3. DAG N4 — consomme N4 (Atlanta agile-gradle), jamais importé par N3/N2
+=== 4. PROCEDURE DE FIN DE SESSION — 6 ETAPES OBLIGATOIRES
+=== 5. HOOK OUVERTURE — Checklist SESSION_CHECKLIST.adoc obligatoire
+=== 6. ZERO secret/token/api key en dur dans le code source (⚠️ GITHUB_TOKEN en env var uniquement)
+=== 7. LECTURE SEULE — lit le backlog, crée/modifie les GitHub Issues
+
+== Tâches Principales
+
+  ./gradlew ticketCreate          → créer des GitHub Issues depuis le backlog
+  ./gradlew ticketBoard           → afficher le board Kanban (console/HTML)
+  ./gradlew ticketLink            → lier les commits aux tickets (conventional commits)
+  ./gradlew ticketReport          → rapport de traçabilité backlog→ticket→commit
+  ./gradlew check                 → tests
+
+== Stack
+
+- Kotlin — DSL Gradle
+- GitHub API (gh CLI wrapper ou kohsuke/github-api)
+- langchain4j — enrichissement tickets IA
+- agile-gradle — dépendance compileOnly, lecture backlog structuré
+- Jackson — parsing backlog → issues
+
+== Ne remplace PAS opencode
+
+Le plugin automatise la création et le suivi des tickets.
+Les décisions de priorisation restent humaines (via les ateliers Atlanta).
