@@ -1,11 +1,12 @@
 = PROMPT_REPRISE — ticket-gradle (Harlem)
 
 == Mission en cours
-Session 000 — Bootstrap gouvernance + cadrage architecture.
+Session 001 — Plugin Gradle stub + build structure.
 
 == État actuel
-- Projet créé : `ticket-gradle/` + `ticket-plugin/`
-- Prochaine : Session 001 — Plugin Gradle stub
+- Session 000 terminée (10/10) : gouvernance agent, BACKLOG 4 US, repo GitHub public Apache 2.0
+- Session 001 : `ticket-plugin/src/main/kotlin/education/cccp/ticket/` — plugin stub, 4 tâches vides
+- Objectif : `./gradlew :ticket-plugin:compileKotlin` BUILD SUCCESSFUL
 
 == Règles
 1. COMMITS/GIT — INTERDIT sans permission

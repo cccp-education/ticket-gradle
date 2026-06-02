@@ -1,0 +1,58 @@
+= Session 000 — Bootstrap gouvernance agent ticket + scaffold projet
+
+*Date* : 2026-06-01
+*Type* : bootstrap
+*Score* : 10/10
+*Durée* : ~2h
+
+'''
+== Objectif
+
+Créer le borough Harlem `ticket-gradle`, 16ème borough du workspace, plugin Gradle N4
+de ticketing : GitHub Issues, Kanban, lien commit↔ticket.
+
+'''
+== Contexte
+
+Dans la chaîne de gouvernance N4 : Atlanta (agile-gradle) → Harlem (ticket-gradle) → Baltimore (review-gradle) → Oakland (flow-gradle).
+Le plugin ticket-gradle consomme le backlog structuré produit par Atlanta pour créer
+des GitHub Issues actionnables, maintenir un board Kanban et la traçabilité commit↔ticket.
+
+'''
+== Ce qui a été réalisé
+
+. Scaffold du projet `foundry/public/ticket-gradle/` (monorepo `ticket-plugin/`)
+. Convention plugin `ticket.gradle-plugin-conventions` (settings/build)
+. Gouvernance agent complète :
+  - `AGENT.adoc` — GitHub Issues, Kanban, lien commit↔ticket, 7 règles absolues
+  - `BACKLOG.adoc` — 4 user stories TKT-1→TKT-4, dette technique, risques
+  - `INDEX.adoc` — roadmap 5 EPICs (TKT-0→TKT-4), portefeuille 18 boroughs
+  - `SESSION_CHECKLIST.adoc`, `SESSION_PROCEDURE.adoc`, `SESSIONS_HISTORY.adoc`
+  - `TEST_COVERAGE_ANALYSIS.adoc`
+  - `PROMPT_REPRISE.adoc`
+. Git init + `.gitignore` + repo GitHub public `cheroliv/ticket-gradle` Apache 2.0 + push
+. `LICENSE` Apache 2.0
+
+'''
+== Décisions clés
+
+- DAG N4 — consomme Atlanta (agile-gradle) en compileOnly, jamais importé par N3/N2
+- GitHub API via gh CLI wrapper ou kohsuke/github-api
+- GITHUB_TOKEN en env var uniquement, jamais en dur
+- Pipeline : Backlog (Atlanta) → IA (LLM) → GitHub Issues → Kanban board → commit link
+
+'''
+== Prochaine étape
+
+Session 001 — Plugin Gradle stub + build structure (`ticket-plugin/` Kotlin, tâches vides,
+compileKotlin BUILD SUCCESSFUL).
+
+'''
+== Vérification post-session
+
+- [x] Gouvernance agent en place (7 fichiers)
+- [x] BACKLOG 4 user stories TKT-1→TKT-4
+- [x] INDEX avec portefeuille 18 boroughs
+- [x] Git repo public + push
+- [x] Zéro secret (GITHUB_TOKEN en env var — pas de token en dur)
+- [x] MAJ AGENTS.adoc workspace (borough Harlem ajouté)
