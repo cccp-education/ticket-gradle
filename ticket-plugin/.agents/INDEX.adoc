@@ -52,3 +52,7 @@ _Prochaine session_ : 001 — Plugin Gradle stub + build structure
 | Liberty 🗽 | api-key-pool-gradle | N0 | 002
 | ALGER 🟡 | dashboard-gradle | N3 | 000
 |===
+
+== Session 001 — JitPack mirror (CNV-16)
+
+Aucune publication JitPack (pas de publication Maven) ; settings shim uniquement. JitPack : n/a.
