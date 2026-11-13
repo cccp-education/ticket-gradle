@@ -1,14 +1,35 @@
 = PROMPT_REPRISE — ticket-gradle (Harlem)
+:session: 003
 
 == Mission en cours
-Session 001 — Plugin Gradle stub + build structure.
+
+Session 003 — Plugin Gradle stub + build structure (TKT-1).
+
+== Contexte
+
+* Session 000 (2026-06-01) : gouvernance agent, BACKLOG 4 US, repo GitHub public
+  Apache 2.0 (TKT-0 ✅).
+* Session 001 (2026-11-09) : shim JitPack CNV-16 (`0.0.15`).
+* Session 002 (2026-11-14) : **CNV-17 JitPack canal unique** — shim conventions
+  repointé `0.0.17` (N0 `workspace-bom 0.0.136`). Aucune publication Maven
+  (bootstrap), pas de CI. Rapport `.agents/sessions/002-cnv-17-jitpack-channel.adoc`.
 
 == État actuel
-- Session 000 terminée (10/10) : gouvernance agent, BACKLOG 4 US, repo GitHub public Apache 2.0
-- Session 001 : `ticket-plugin/src/main/kotlin/education/cccp/ticket/` — plugin stub, 4 tâches vides
+
+- `ticket-plugin/src/main/kotlin/education/cccp/ticket/` — plugin stub, 4 tâches vides
 - Objectif : `./gradlew :ticket-plugin:compileKotlin` BUILD SUCCESSFUL
 
+== Prochaine étape
+
+. Créer `ticket-plugin/build.gradle.kts` (java-gradle-plugin + kotlin-jvm)
+. Plugin descriptor `education.cccp.ticket`
+. `TicketPlugin.kt` + `TicketExtension.kt` + 4 tâches stub
+. Vérifier `./gradlew compileKotlin` (Local = Build, pas de test local)
+
 == Règles
-1. COMMITS/GIT — INTERDIT sans permission
+
+1. COMMITS/GIT — AUTORISÉS (décision pilote 2026-11-11)
 2. ZERO secret en dur (GITHUB_TOKEN env var)
 3. DAG N4 — consomme Atlanta agile-gradle
+4. PUBLISH — canal unique **JitPack** pour le public ; version = tag
+5. Local = Build, Tests = CI

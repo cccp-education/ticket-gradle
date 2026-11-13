@@ -77,3 +77,8 @@ et maintient la **traçabilité bidirectionnelle** backlog → ticket → commit
 * Consomme le backlog d'Atlanta (agile-gradle) — contrat : metadata.json + story-mapping.adoc
 * GITHUB_TOKEN obligatoire en env var, jamais en dur
 * Le plugin ne crée pas le backlog, il le consomme pour créer les tickets
+
+== Session 002 — CNV-17 (JitPack canal unique)
+
+Shim conventions `0.0.17` (N0 `workspace-bom 0.0.136`) ; aucune publication Maven ;
+CI n/a. Rapport `.agents/sessions/002-cnv-17-jitpack-channel.adoc`.
