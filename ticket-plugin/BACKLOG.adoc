@@ -3,6 +3,7 @@
 
 _Date création_ : 2026-06-01
 _Version_ : 0.1.0-SNAPSHOT
+_Dernière mise à jour_ : 2026-11-15 (session 003 — GBL-014-5 / GBL-014-4)
 
 '''
 == Vision Produit
@@ -82,3 +83,10 @@ et maintient la **traçabilité bidirectionnelle** backlog → ticket → commit
 
 Shim conventions `0.0.17` (N0 `workspace-bom 0.0.136`) ; aucune publication Maven ;
 CI n/a. Rapport `.agents/sessions/002-cnv-17-jitpack-channel.adoc`.
+
+== Session 003 — GBL-014-5 / GBL-014-4 (canal dual)
+
+`settings.gradle.kts` (racine) conditionnel `-Pchannel` (défaut `jitpack` ;
+JitPack repo + shim seulement en `jitpack`) ; shim conventions `0.0.19`. Aucun
+code, aucun test, aucune publication. `TKT-1` reporté en session 004. Rapport
+`.agents/sessions/003-gbl-014-5-channel-conditional-settings.adoc`.

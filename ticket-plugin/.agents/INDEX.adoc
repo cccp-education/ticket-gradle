@@ -5,9 +5,10 @@ _Règles absolues_ : voir `AGENT.adoc`
 _DAG_ : N4 — Plugin Gradle de ticketing (GitHub Issues, Kanban, lien commit↔ticket)
 _Dépendance N4_ : agile-gradle (compileOnly, lecture backlog)
 
+_Derniere mise a jour : 2026-11-15 — Session 003 — GBL-014-5 : settings conditionnels `-Pchannel` (défaut `jitpack`, JitPack repo + shim seulement en `jitpack`) + shim conventions `0.0.19` (GBL-014-4)_
 _Dernière mise à jour_ : 2026-11-14 (Session 002 — CNV-17 JitPack canal unique)
-_Session terminée_ : 002 — CNV-17 : shim conventions `0.0.17` (JitPack), pas de publication Maven
-_Prochaine session_ : 003 — Plugin Gradle stub + build structure (TKT-1)
+_Session terminée_ : 003 — GBL-014-5 / GBL-014-4 : settings conditionnels au canal, shim `0.0.19`
+_Prochaine session_ : 004 — Plugin Gradle stub + build structure (TKT-1)
 
 == Roadmap
 

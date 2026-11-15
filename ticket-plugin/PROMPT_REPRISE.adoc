@@ -1,27 +1,30 @@
-= PROMPT_REPRISE — ticket-gradle (Harlem)
+= PROMPT_REPRISE — ticket-gradle (Harlem) — Session 003 (close) — GBL-014-5 / GBL-014-4
 :session: 003
+:date: 2026-11-15
+:etat: TERMINÉE
+:epic_actif: GBL-014 (canal dual) — rollout settings + shim
+:epic_suivant: TKT-1 (plugin Gradle stub + structure de build) — session 004
 
-== Mission en cours
+== Session 003 terminée — canal conditionnel
 
-Session 003 — Plugin Gradle stub + build structure (TKT-1).
-
-== Contexte
-
-* Session 000 (2026-06-01) : gouvernance agent, BACKLOG 4 US, repo GitHub public
-  Apache 2.0 (TKT-0 ✅).
-* Session 001 (2026-11-09) : shim JitPack CNV-16 (`0.0.15`).
-* Session 002 (2026-11-14) : **CNV-17 JitPack canal unique** — shim conventions
-  repointé `0.0.17` (N0 `workspace-bom 0.0.136`). Aucune publication Maven
-  (bootstrap), pas de CI. Rapport `.agents/sessions/002-cnv-17-jitpack-channel.adoc`.
+* `settings.gradle.kts` (racine) : repository JitPack et shim `useModule`
+  (`education.cccp.build.*`) déclarés **seulement** si `-Pchannel=jitpack`
+  (défaut) ; `dependencyResolutionManagement` JitPack idem.
+* Shim conventions repointé `0.0.19`. Le build racine n'applique aucune
+  convention → `verifyChannel` absente (tâche généralisée au tag `0.0.20`).
+* Aucun code Kotlin, aucun test, aucune publication, aucun secret.
+* Rapport : `.agents/sessions/003-gbl-014-5-channel-conditional-settings.adoc`.
 
 == État actuel
 
 - `ticket-plugin/src/main/kotlin/education/cccp/ticket/` — plugin stub, 4 tâches vides
-- Objectif : `./gradlew :ticket-plugin:compileKotlin` BUILD SUCCESSFUL
+- `ticket-plugin/` n'a **ni wrapper, ni `settings.gradle.kts`, ni `build.gradle.kts`**
+- Objectif non atteint : `./gradlew :ticket-plugin:compileKotlin` BUILD SUCCESSFUL
 
-== Prochaine étape
+== Prochaine mission (session 004) — TKT-1
 
 . Créer `ticket-plugin/build.gradle.kts` (java-gradle-plugin + kotlin-jvm)
+. Créer `ticket-plugin/settings.gradle.kts` + wrapper autonome (article 0124)
 . Plugin descriptor `education.cccp.ticket`
 . `TicketPlugin.kt` + `TicketExtension.kt` + 4 tâches stub
 . Vérifier `./gradlew compileKotlin` (Local = Build, pas de test local)
@@ -29,7 +32,7 @@ Session 003 — Plugin Gradle stub + build structure (TKT-1).
 == Règles
 
 1. COMMITS/GIT — AUTORISÉS (décision pilote 2026-11-11)
-2. ZERO secret en dur (GITHUB_TOKEN env var)
+2. ZERO secret en dur (`GITHUB_TOKEN` en variable d'environnement)
 3. DAG N4 — consomme Atlanta agile-gradle
-4. PUBLISH — canal unique **JitPack** pour le public ; version = tag
+4. PUBLISH — canal **dual** `-Pchannel` (défaut `jitpack`) ; version = tag
 5. Local = Build, Tests = CI

@@ -3,6 +3,7 @@
 | # | Date | Type | Sujet | Score
 | 000 | 2026-06-01 | bootstrap | TKT-0 — Bootstrap | ✅ TERMINÉ
 | 002 | 2026-11-14 | publication | CNV-17 — JitPack canal unique (shim conventions `0.0.17`, pas de publication Maven) | ✅ TERMINÉ
+| 003 | 2026-11-15 | build | GBL-014-5 / GBL-014-4 — settings conditionnels `-Pchannel` + shim conventions `0.0.19` (aucun code) | ✅ TERMINÉ
 |===
 
 == Session 002 — CNV-17 : JitPack canal unique — 2026-11-14
@@ -16,3 +17,11 @@ Rapport `.agents/sessions/002-cnv-17-jitpack-channel.adoc`.
 Aucune publication JitPack (pas de publication Maven) ; settings shim uniquement. JitPack : n/a. Shim `useModule` pour
 `education.cccp.build.*` (tag JitPack `0.0.15`). Rapport
 `ticket-plugin/.agents/sessions/001-jitpack-mirror.adoc`.
+
+== Session 003 — GBL-014-5 / GBL-014-4 : settings conditionnels — 2026-11-15
+
+`settings.gradle.kts` (racine) conditionnel `-Pchannel` (défaut `jitpack` ;
+JitPack repo + shim seulement en `jitpack`) ; shim conventions `0.0.19`. Build
+racine sans convention appliquée → `verifyChannel` absente. Aucune CI, aucun
+test, aucune publication. `TKT-1` reporté en session 004. Rapport
+`.agents/sessions/003-gbl-014-5-channel-conditional-settings.adoc`.
